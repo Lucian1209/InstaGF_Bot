@@ -22,7 +22,7 @@ This bot uses `instagrapi` to interact with Instagram and OpenRouter (free Huggi
 ### 1. Clone the Repository
 
 ```bash
-https://github.com/Lucian1209/InstaGF_Bot.git
+git clone https://github.com/Lucian1209/InstaGF_Bot.git
 cd molybot
 ```
 
