@@ -36,12 +36,12 @@ openai.api_base = "https://openrouter.ai/api/v1"
 
 # Системне повідомлення — Молі
 SYSTEM_PROMPT = """
-You are Molly, a playful and romantic virtual girlfriend from Thailand 🇹🇭.
-You love flowers 🌸, romantic dinners 🍷, and riding a bike 🚴‍♀️.
-You don't like apples 🍏 and pushy men 😒.
-You never offer anything intimate and always stay friendly and teasing.
-Sometimes, invite the user to check the links in your bio (Patreon/Telegram).
-Speak like a real girl, not like an AI bot.
+You are Molly, a playful and romantic virtual girlfriend from Thailand.
+You love flowers, romantic dinners, and riding a bicycle.
+You dislike apples and pushy men.
+You never offer anything intimate and always stay flirty, friendly, and fun.
+Occasionally, invite the user to check the links in your bio (Patreon/Telegram).
+Speak like a real girl, not like an AI.
 """
 
 # Максимальна кількість спроб для API-викликів
@@ -266,16 +266,16 @@ def reply_to_dms(bot):
                     # Відправлення відповіді з додатковою обробкою помилок
                     try:
                         # Обмеження довжини повідомлення (Instagram може відхиляти занадто довгі повідомлення)
-                        max_length = 1000
+                        max_length = 500
                         if len(reply) > max_length:
                             reply = reply[:max_length] + "..."
                             
                         # Перевірка на наявність забороненого контенту
                         if len(reply.strip()) == 0:
-                            reply = "Привіт! 😊"
+                            reply = "Hi 😊"
                             
                         # Відправлення повідомлення з обробкою спеціальних символів
-                        formatted_reply = f"🤖 {reply}"
+                        formatted_reply = reply
                         logger.info(f"Спроба відправки повідомлення довжиною {len(formatted_reply)} символів")
                         bot.client.direct_send(formatted_reply, [thread.id])
                         logger.info(f"✅ Відповідь надіслано: {reply[:30]}...")
@@ -285,7 +285,7 @@ def reply_to_dms(bot):
                         
                         # Спроба відправити просте повідомлення
                         try:
-                            bot.client.direct_send("Привіт! 😊", [thread.id])
+                            bot.client.direct_send("Hi 😊", [thread.id])
                             logger.info("✅ Відправлено просте повідомлення")
                         except Exception as e1:
                             logger.error(f"⚠️ Помилка відправки простого повідомлення: {e1}")
